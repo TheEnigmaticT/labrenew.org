@@ -5,54 +5,44 @@ import { Footer } from "@/components/Footer";
 const donationTiers = [
   {
     name: "Bronze",
-    amount: "$100",
+    amount: "$5",
+    period: "/month",
     description:
       "Every dollar you donate goes towards helping labs devote more money to research and lose less to waste.",
-    href: "#", // Replace with Stripe Payment Link
+    href: "https://buy.stripe.com/6oE8xv4012rf1EYaEI",
   },
   {
     name: "Silver",
-    amount: "$300",
+    amount: "$25",
+    period: "/month",
     description:
       "Every dollar you donate goes towards helping labs devote more money to research and lose less to waste.",
-    href: "#",
-    featured: true,
+    href: "https://buy.stripe.com/aEU4hffIJ0j797qcMM",
   },
   {
     name: "Gold",
-    amount: "$500",
+    amount: "$50",
+    period: "/month",
     description:
       "Every dollar you donate goes towards helping labs devote more money to research and lose less to waste.",
-    href: "#",
+    href: "https://buy.stripe.com/00g3dbbst3vj97q4gh",
+    featured: true,
   },
   {
-    name: "Custom Amount",
-    amount: "You choose",
-    description: "Select your own custom amount to donate.",
-    href: "#",
-  },
-];
-
-const auditProducts = [
-  {
-    name: "Low Cost/No Cost Item Checklist",
-    price: "$15",
-    href: "#",
+    name: "Platinum",
+    amount: "$125",
+    period: "/month",
+    description:
+      "Every dollar you donate goes towards helping labs devote more money to research and lose less to waste.",
+    href: "https://buy.stripe.com/28ocNLdAB4zn5Ve7su",
   },
   {
-    name: "Low Cost/No Cost Item Checklist",
-    price: "$25",
-    href: "#",
-  },
-  {
-    name: "Low Cost/No Cost Item Checklist",
-    price: "$35",
-    href: "#",
-  },
-  {
-    name: "Sustainable Inventory Audit",
-    price: "$40",
-    href: "#",
+    name: "Champion",
+    amount: "$400",
+    period: "/month",
+    description:
+      "Every dollar you donate goes towards helping labs devote more money to research and lose less to waste.",
+    href: "https://buy.stripe.com/3cs8xv9kl9TH3N6aEH",
   },
 ];
 
@@ -80,7 +70,7 @@ export default function DonatePage() {
                 tax-deductible.
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {donationTiers.map((tier) => (
                 <a
                   key={tier.name}
@@ -99,11 +89,18 @@ export default function DonatePage() {
                     {tier.name}
                   </p>
                   <p
-                    className={`font-heading text-4xl font-bold mb-4 ${
+                    className={`font-heading text-4xl font-bold mb-1 ${
                       tier.featured ? "text-white" : "text-lr-blue"
                     }`}
                   >
                     {tier.amount}
+                  </p>
+                  <p
+                    className={`text-sm mb-4 ${
+                      tier.featured ? "text-white/70" : "text-lr-text-muted"
+                    }`}
+                  >
+                    {tier.period}
                   </p>
                   <p
                     className={`text-sm leading-relaxed mb-6 ${
@@ -127,84 +124,6 @@ export default function DonatePage() {
           </div>
         </section>
 
-        {/* Audit Products */}
-        <section className="py-16 md:py-24 bg-lr-neutral">
-          <div className="mx-auto max-w-[1200px] px-6">
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-lr-blue mb-4">
-                Sustainable Inventory Audit
-              </h2>
-              <p className="text-lg text-lr-text-muted max-w-2xl mx-auto">
-                Tools and checklists to help your lab get started on the path to
-                sustainability.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {auditProducts.map((product, i) => (
-                <a
-                  key={i}
-                  href={product.href}
-                  className="block bg-white rounded-xl p-8 text-center hover:shadow-lg hover:-translate-y-1 transition-all"
-                >
-                  <Image
-                    src="/images/check-circle.svg"
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="mx-auto mb-4"
-                  />
-                  <p className="font-heading text-lg font-bold text-lr-dark mb-2">
-                    {product.name}
-                  </p>
-                  <p className="font-heading text-3xl font-bold text-lr-blue mb-4">
-                    {product.price}
-                  </p>
-                  <span className="inline-flex items-center justify-center rounded-lg bg-lr-green px-6 py-2.5 text-[15px] font-semibold text-lr-dark hover:bg-lr-green/90 transition-colors">
-                    Donate Now
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services repeat */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="mx-auto max-w-[1200px] px-6 text-center">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-lr-blue mb-12">
-              What are we doing to assist these laboratories?
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: "/images/energy-efficient.svg",
-                  title: "Energy Efficient Practices",
-                },
-                {
-                  icon: "/images/water-conservation.svg",
-                  title: "Water Conservation",
-                },
-                { icon: "/images/green-chemistry.svg", title: "Green Chemistry" },
-                { icon: "/images/recycling.svg", title: "Recycling & Waste Reduction" },
-                { icon: "/images/green-behavior.svg", title: "Green Behavior" },
-                { icon: "/images/green-chemistry.svg", title: "And More!" },
-              ].map((s) => (
-                <div key={s.title} className="flex items-center gap-4 p-4">
-                  <Image
-                    src={s.icon}
-                    alt={`${s.title} icon`}
-                    width={48}
-                    height={48}
-                    className="flex-shrink-0"
-                  />
-                  <p className="font-heading text-lg font-bold text-lr-dark">
-                    {s.title}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

@@ -34,6 +34,9 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${spaceGrotesk.variable} antialiased`}
     >
+      <head>
+        <meta name="build-version" content="20260521-200802" />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

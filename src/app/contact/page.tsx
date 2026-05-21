@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useState } from "react";
@@ -57,21 +58,7 @@ const faqs = [
 ];
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    // In production, wire this to an API route or service like Formspree
-    setSubmitted(true);
-  }
 
   return (
     <>
@@ -134,122 +121,24 @@ export default function ContactPage() {
             <h2 className="font-heading text-3xl font-bold text-lr-blue text-center mb-8">
               Send us a message
             </h2>
-
-            {submitted ? (
-              <div className="text-center py-12 bg-lr-green/10 rounded-xl">
-                <Image
-                  src="/images/check-circle.svg"
-                  alt=""
-                  width={48}
-                  height={48}
-                  className="mx-auto mb-4"
-                />
-                <p className="font-heading text-xl font-bold text-lr-dark">
-                  Thanks for reaching out!
-                </p>
-                <p className="text-[15px] text-lr-text-muted mt-2">
-                  We will get back to you soon.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-lr-dark mb-1.5"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    required
-                    value={formState.name}
-                    onChange={(e) =>
-                      setFormState({ ...formState, name: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-border px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-lr-blue"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-lr-dark mb-1.5"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={formState.email}
-                    onChange={(e) =>
-                      setFormState({ ...formState, email: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-border px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-lr-blue"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-lr-dark mb-1.5"
-                  >
-                    Phone (optional)
-                  </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    value={formState.phone}
-                    onChange={(e) =>
-                      setFormState({ ...formState, phone: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-border px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-lr-blue"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-lr-dark mb-1.5"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    type="text"
-                    required
-                    value={formState.subject}
-                    onChange={(e) =>
-                      setFormState({ ...formState, subject: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-border px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-lr-blue"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-lr-dark mb-1.5"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={5}
-                    value={formState.message}
-                    onChange={(e) =>
-                      setFormState({ ...formState, message: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-border px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-lr-blue resize-y"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full rounded-lg bg-lr-blue px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-lr-blue-light transition-colors"
-                >
-                  Send Message
-                </button>
-              </form>
-            )}
+            <iframe
+              src="https://sales.labrenew.org/widget/form/1gWBWIbzrhKrf0GjlqEI"
+              style={{ width: "100%", height: "1037px", border: "none", borderRadius: "8px" }}
+              id="inline-1gWBWIbzrhKrf0GjlqEI"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Contact Form"
+              data-height="1037"
+              data-layout-iframe-id="inline-1gWBWIbzrhKrf0GjlqEI"
+              data-form-id="1gWBWIbzrhKrf0GjlqEI"
+              title="Contact Form"
+            />
+            <Script src="https://sales.labrenew.org/js/form_embed.js" strategy="lazyOnload" />
           </div>
         </section>
 
