@@ -27,7 +27,7 @@ export function EventRegistration({
     <iframe
       src={lumaEmbedUrl}
       title={`Failure isn’t Waste — ${format} registration`}
-      className="min-h-[450px] w-full rounded border border-[#bfcbda88]"
+      className="h-[900px] w-full rounded border border-[#bfcbda88]"
       loading="lazy"
       allow="fullscreen; payment"
       aria-hidden={false}
