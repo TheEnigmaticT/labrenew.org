@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { DM_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         <meta name="build-version" content="20260521-200802" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
+      <GoogleAnalytics gaId="G-PQ1CFZ3JBY" />
     </html>
   );
 }
